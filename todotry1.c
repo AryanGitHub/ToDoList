@@ -19,7 +19,7 @@ void CreateTodo();
 void fixcount();
 void DeleteTodo();
 void updateTodo();
-
+int mainMenu();
 
 
 typedef struct ToDo todo;
@@ -34,22 +34,10 @@ todo *start= NULL;
 
 void main(){
     int choice;
-    system("pause");
+    //system("pause");
     wlcScreen();
     while(1){
-        system("color f0");
-        system("cls");
-        p("\n\n\n\n\n\n\n\n");
-        p("\n\t\t\t\t\t\t 1. See your ToDo List. \n");
-        p("\n\t\t\t\t\t\t 2. Create your ToDo List. \n");
-        p("\n\t\t\t\t\t\t 3. Delete your ToDo List. \n");
-        p("\n\t\t\t\t\t\t 4. Update your ToDo List. \n");
-        p("\n\t\t\t\t\t\t 5. Exit ");
-        p("\n\t\t\t\t\t\t");
-        p("\n\t\t\t\t\t\t");
-        p("\n\t\t\t\t\t\t Enter your choice \n\t\t\t\t\t\t --> ");
-        s("%d",&choice);
-
+        choice = mainMenu();
         switch(choice){
         case 1:
             seeTodo();
@@ -64,6 +52,7 @@ void main(){
             updateTodo();
             break;
         case 5:
+            system("cls");
             exit(0);
         }
 
@@ -189,6 +178,25 @@ void wlcScreen(){
     //p("\n\n\n\n\n");
     p("\n\n\n\t\t\t\t\t      ");
     system("pause");
+}
+
+
+int mainMenu(){
+    int choice;
+    
+    system("color f0");
+    system("cls");
+    p("\n\n\n\n\n\n\n\n");
+    p("\n\t\t\t\t\t\t 1. See your ToDo List. \n");
+    p("\n\t\t\t\t\t\t 2. Create your ToDo List. \n");
+    p("\n\t\t\t\t\t\t 3. Delete your ToDo List. \n");
+    p("\n\t\t\t\t\t\t 4. Update your ToDo List. \n");
+    p("\n\t\t\t\t\t\t 5. Exit ");
+    p("\n\t\t\t\t\t\t");
+    p("\n\t\t\t\t\t\t");
+    p("\n\t\t\t\t\t\t Enter your choice \n\t\t\t\t\t\t --> ");
+    scanf("%d",&choice);
+    return choice;
 }
 
 void seeTodo(){
