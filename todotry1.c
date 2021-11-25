@@ -34,7 +34,7 @@ todo *start= NULL;
 
 void main(){
     int choice;
-    system("pause");
+    //system("pause");
     wlcScreen();
     while(1){
         system("color f0");
