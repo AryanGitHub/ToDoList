@@ -64,6 +64,7 @@ void main(){
             updateTodo();
             break;
         case 5:
+            system("cls");
             exit(0);
         }
 
