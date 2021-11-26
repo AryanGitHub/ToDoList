@@ -78,7 +78,7 @@ void wlcScreen(){
     p("\n\n\n\n      ");
 
     c=215;
-    p("\n\t\t\t\t\t         / ----- %c%c%c%c%c ----- \\",c,c,c,c,c);
+    p("\n\t\t\t\t\t         /-+-+-+-+-+-+-+-+-+-\\");
     p("\n\t\t\t\t\t        /                     \\");
     p("\n\t\t\t\t\t       /                       \\");
     p("\n\t\t\t\t\t      /                         \\");
