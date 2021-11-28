@@ -224,18 +224,15 @@ void seeTodo(){
 
 void CreateTodo(){
 
-    char a;
+    char a[500];
     todo *ptr , *ptr2;
     system("cls");
     while(1){
         p("\n\t\t\t\t\t\t Want to add? y/n \n\t\t\t\t\t\t -->");
         fflush(stdin);
-        s("%c",&a);
-        if(a equ 'n')
-        {
-            break;
-        }
-        else
+        s("%s",a);
+        
+        if(a[0] equ'y' && a[1] equ '\0')
         {
             if(start equ NULL)
             {
@@ -259,6 +256,10 @@ void CreateTodo(){
                 ptr = ptr->next; //just like i++ for increment
             }
             fixcount();
+        }
+        if(a equ 'n')
+        {
+            break;
         }
     }
 
