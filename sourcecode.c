@@ -75,35 +75,35 @@ void wlcScreen(){
     system("color f0");
     char c;
     system("cls");
-    p("\n\n\n\n      ");
+    printf("\n\n\n\n      ");
 
     c=215;
-    p("\n\t\t\t\t\t         /-+-+-+-+-+-+-+-+-+-\\");
-    p("\n\t\t\t\t\t        /                     \\");
-    p("\n\t\t\t\t\t       /                       \\");
-    p("\n\t\t\t\t\t      /                         \\");
-    p("\n\n");
+    printf("\n\t\t\t\t\t         /-+-+-+-+-+-+-+-+-+-\\");
+    printf("\n\t\t\t\t\t        /                     \\");
+    printf("\n\t\t\t\t\t       /                       \\");
+    printf("\n\t\t\t\t\t      /                         \\");
+    printf("\n\n");
 
 
     // first line
-    p("\t\t\t\t\t%c%c%c%c%c%c",c=176,c=176,c=177,c=177,c=178,c=178);
-    p("\t\t\t\t %c%c%c%c%c%c",c=178,c=178,c=177,c=177,c=176,c=176);
-    p("\n\n\t       ");
+    printf("\t\t\t\t\t%c%c%c%c%c%c",c=176,c=176,c=177,c=177,c=178,c=178);
+    printf("\t\t\t\t %c%c%c%c%c%c",c=178,c=178,c=177,c=177,c=176,c=176);
+    printf("\n\n\t       ");
 
 
     // second line
     // diamonds
     c=4;
     for(int i=0; i<10; i++){
-        p("-%c",c);
+        printf("-%c",c);
     }
     // heart
     c=3;
     for(int i=0; i<5; i++){
-        p("--%c",c);
+        printf("--%c",c);
     }
 
-    p("    %cl %c  l l %c    ",c=195,c=137,c=153);
+    printf("    %cl %c  l l %c    ",c=195,c=137,c=153);
 
 
 
@@ -111,49 +111,49 @@ void wlcScreen(){
     // heart
     c=3;
     for(int i=0; i<4; i++){
-        p("%c--",c);
+        printf("%c--",c);
     }
 
-    p("%c-",c);
+    printf("%c-",c);
    // diamonds
     c=4;
     for(int i=0; i<10; i++){
-        p("-%c",c);
+        printf("-%c",c);
     }
-    p("-\n");
+    printf("-\n");
 
     // third line
     c=157;
-    p("\n\t\t\t   ------ %c ------\t\t\t\t    ------ %c ------",c,c);
+    printf("\n\t\t\t   ------ %c ------\t\t\t\t    ------ %c ------",c,c);
 
 
     // fourth line
     c=153;
-    p("\n\t\t\t\t\t\t\t   %c",c);
+    printf("\n\t\t\t\t\t\t\t   %c",c);
 
 
     // fifth line
     c=240;
-    p("\n\t\t\t\t\t\t\t ");
+    printf("\n\t\t\t\t\t\t\t ");
     for(int i=0; i<5; i++){
-        p("%c",c);
+        printf("%c",c);
     }
 
     // sixth line
     c=194;
-    p("\n\t\t\t\t\t\t\t   %c",c);
+    printf("\n\t\t\t\t\t\t\t   %c",c);
 
     // seventh line
-    p("\n\t\t\t\t\t\t\t   |");
+    printf("\n\t\t\t\t\t\t\t   |");
 
     // eighth line
-    p("\n\t\t\t\t\t\t\t   |");
+    printf("\n\t\t\t\t\t\t\t   |");
 
     // ninth line
-    p("\n\t\t\t\t\t\t\t   |");
+    printf("\n\t\t\t\t\t\t\t   |");
 
     // tenth line
-    p("\n\t\t\t\t\t\t\t   |");
+    printf("\n\t\t\t\t\t\t\t   |");
 
 
     while(1){
@@ -175,8 +175,8 @@ void wlcScreen(){
 
 
 
-    //p("\n\n\n\n\n");
-    p("\n\n\n\t\t\t\t\t      ");
+    //printf("\n\n\n\n\n");
+    printf("\n\n\n\t\t\t\t\t      ");
     system("pause");
 }
 
@@ -186,15 +186,15 @@ int mainMenu(){
     
     system("color f0");
     system("cls");
-    p("\n\n\n\n\n\n\n\n");
-    p("\n\t\t\t\t\t\t 1. See your ToDo List. \n");
-    p("\n\t\t\t\t\t\t 2. Create your ToDo List. \n");
-    p("\n\t\t\t\t\t\t 3. Delete your ToDo List. \n");
-    p("\n\t\t\t\t\t\t 4. Update your ToDo List. \n");
-    p("\n\t\t\t\t\t\t 5. Exit ");
-    p("\n\t\t\t\t\t\t");
-    p("\n\t\t\t\t\t\t");
-    p("\n\t\t\t\t\t\t Enter your choice \n\t\t\t\t\t\t --> ");
+    printf("\n\n\n\n\n\n\n\n");
+    printf("\n\t\t\t\t\t\t 1. See your ToDo List. \n");
+    printf("\n\t\t\t\t\t\t 2. Create your ToDo List. \n");
+    printf("\n\t\t\t\t\t\t 3. Delete your ToDo List. \n");
+    printf("\n\t\t\t\t\t\t 4. Update your ToDo List. \n");
+    printf("\n\t\t\t\t\t\t 5. Exit ");
+    printf("\n\t\t\t\t\t\t");
+    printf("\n\t\t\t\t\t\t");
+    printf("\n\t\t\t\t\t\t Enter your choice \n\t\t\t\t\t\t --> ");
     scanf("%d",&choice);
     return choice;
 }
@@ -205,19 +205,19 @@ void seeTodo(){
     temp = start;
     if(start equ NULL)
     {
-        p("\n\t\t\t\t\t\t Empty list");
+        printf("\n\t\t\t\t\t\t Empty list");
     }
     else
     {
         while(temp not_equ NULL)
         {
-            p("\n\t\t\t\t\t\t %d . ",temp->count);
+            printf("\n\t\t\t\t\t\t %d . ",temp->count);
             puts(temp->data);
             fflush(stdin);
             temp= temp->next;
         }
     }
-    p("\n\t\t\t\t\t\t");
+    printf("\n\t\t\t\t\t\t");
     system("pause");
 
 }
@@ -228,7 +228,7 @@ void CreateTodo(){
     todo *ptr , *ptr2;
     system("cls");
     while(1){
-        p("\n\t\t\t\t\t\t Want to add? y/n \n\t\t\t\t\t\t -->");
+        printf("\n\t\t\t\t\t\t Want to add? y/n \n\t\t\t\t\t\t -->");
         fflush(stdin);
         s("%s",a);
         
@@ -238,7 +238,7 @@ void CreateTodo(){
             {
                 ptr = (todo *)calloc(1,sizeof(todo));
                 start = ptr;
-                p("\n\t\t\t\t\t\t Write 1st list here \n\t\t\t\t\t\t --> ");
+                printf("\n\t\t\t\t\t\t Write 1st list here \n\t\t\t\t\t\t --> ");
                 fflush(stdin);
                 gets(ptr->data);
                 ptr->count = 1;
@@ -247,7 +247,7 @@ void CreateTodo(){
             else
             {
                 ptr2 = (todo *)calloc(1, sizeof(todo));
-                p("\n\t\t\t\t\t\t Write another list here \n\t\t\t\t\t\t --> ");
+                printf("\n\t\t\t\t\t\t Write another list here \n\t\t\t\t\t\t --> ");
                 fflush(stdin);
                 gets(ptr2->data);
 
@@ -257,7 +257,7 @@ void CreateTodo(){
             }
             fixcount();
         }
-        if(a equ 'n')
+        if(a[0]=='n'&& a[1]=='\0')
         {
             break;
         }
@@ -283,7 +283,7 @@ void DeleteTodo(){
     int a;
     todo *ptr,*ptr1;   // points to starting list
      // points to next list for tracing
-    p("\n\t\t\t\t\t\t Enter the number you want to delete \n\t\t\t\t\t\t --> ");
+    printf("\n\t\t\t\t\t\t Enter the number you want to delete \n\t\t\t\t\t\t --> ");
     s("%d",&a);
 
     ptr = start;
@@ -324,14 +324,14 @@ void updateTodo(){
     char a;
     while(1)
     {
-        p("\n\t\t\t\t\t\t Want to add ? y/n \n\t\t\t\t\t\t --> ");
+        printf("\n\t\t\t\t\t\t Want to add ? y/n \n\t\t\t\t\t\t --> ");
         fflush(stdin);
         s("%c",&a);
         if(a equ 'n')
         {
             break;
         }
-        p("\n\t\t\t\t\t\t Write here \n\t\t\t\t\t\t -->");
+        printf("\n\t\t\t\t\t\t Write here \n\t\t\t\t\t\t -->");
         ptr = (todo *)calloc(1, sizeof(todo));
         fflush(stdin);
         gets(ptr->data);
@@ -344,7 +344,7 @@ void updateTodo(){
         ptr1->next=ptr;
         fixcount();
     }
-    p("\n\t\t\t\t\t\t");
+    printf("\n\t\t\t\t\t\t");
     //system("pause");
 }
 
