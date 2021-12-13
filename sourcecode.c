@@ -186,6 +186,13 @@ int mainMenu(){
     
     system("color f0");
     system("cls");
+    //
+    struct tm* ptr;
+    time_t t;
+    t = time(NULL);
+    ptr = localtime(&t);
+    printf("\n\n\n\n                                                 %s", asctime(ptr));
+    //
     printf("\n\n\n\n\n\n\n\n");
     printf("\n\t\t\t\t\t\t 1. See your ToDo List. \n");
     printf("\n\t\t\t\t\t\t 2. Create your ToDo List. \n");
@@ -321,16 +328,17 @@ void DeleteTodo(){
 void updateTodo(){
     system("cls");
     todo *ptr, *ptr1;
-    char a;
+    char a[1000];
     while(1)
     {
         printf("\n\t\t\t\t\t\t Want to add ? y/n \n\t\t\t\t\t\t --> ");
         fflush(stdin);
         s("%c",&a);
-        if(a equ 'n')
+        if(a[0]=='n'&& a[1]=='\0')
         {
             break;
         }
+        if(a[0] equ'y' && a[1] equ '\0'){
         printf("\n\t\t\t\t\t\t Write here \n\t\t\t\t\t\t -->");
         ptr = (todo *)calloc(1, sizeof(todo));
         fflush(stdin);
@@ -343,6 +351,7 @@ void updateTodo(){
         }
         ptr1->next=ptr;
         fixcount();
+        }
     }
     printf("\n\t\t\t\t\t\t");
     //system("pause");
