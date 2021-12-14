@@ -287,6 +287,7 @@ void fixcount(){
 
 void DeleteTodo(){
     system("cls");
+    if(start not_equ NULL){
     int a;
     todo *ptr,*ptr1;   // points to starting list
      // points to next list for tracing
@@ -322,7 +323,11 @@ void DeleteTodo(){
         }
 
     }
-    //system("pause");
+}
+    else {
+            printf("\n\t\t\t\t\t\t Cannot delete as list is empty.\n\t\t\t\t\t\t");
+            system ("pause");
+    }
 }
 
 void updateTodo(){
