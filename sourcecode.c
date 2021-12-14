@@ -338,12 +338,12 @@ void updateTodo(){
     {
         printf("\n\t\t\t\t\t\t Want to add ? y/n \n\t\t\t\t\t\t --> ");
         fflush(stdin);
-        s("%c",&a);
+        s("%s",a);
         if(a[0]=='n'&& a[1]=='\0')
         {
             break;
         }
-        if(a[0] equ'y' && a[1] equ '\0'){
+        if(a[0] equ 'y' && a[1] equ '\0'){
         printf("\n\t\t\t\t\t\t Write here \n\t\t\t\t\t\t -->");
         ptr = (todo *)calloc(1, sizeof(todo));
         fflush(stdin);
