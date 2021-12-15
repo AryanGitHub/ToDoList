@@ -19,6 +19,7 @@ void CreateTodo();
 void fixcount();
 void DeleteTodo();
 void updateTodo();
+int listExists();
 int mainMenu();
 
 
@@ -58,7 +59,13 @@ void main(){
 
     }
 }
-
+int listExists(){
+    /*
+    returns 1 if list already exist
+    otherwise it returns 0
+    */
+    return *start not_equ NULL;
+}
 void delay(int number_of_seconds){
     // Converting time into milli_seconds
     int milli_seconds = 1000 * number_of_seconds;
