@@ -44,15 +44,15 @@ void main(){
             seeTodo();
             break;
         case 2:
-            CreateTodo();
+            if (listExists())
+                updateTodo();
+            else
+                CreateTodo();
             break;
         case 3:
             DeleteTodo();
             break;
         case 4:
-            updateTodo();
-            break;
-        case 5:
             system("cls");
             exit(0);
         }
@@ -63,8 +63,8 @@ int listExists(){
     /*
     returns 1 if list already exist
     otherwise it returns 0
-    */
-    return *start not_equ NULL;
+    */ 
+    return (start not_equ NULL);
 }
 void delay(int number_of_seconds){
     // Converting time into milli_seconds
@@ -202,10 +202,14 @@ int mainMenu(){
     //
     printf("\n\n\n\n\n\n\n\n");
     printf("\n\t\t\t\t\t\t 1. See your ToDo List. \n");
-    printf("\n\t\t\t\t\t\t 2. Create your ToDo List. \n");
+    if (listExists()){
+        printf("\n\t\t\t\t\t\t 2. Update your ToDo List. \n");
+    }
+    else {
+        printf("\n\t\t\t\t\t\t 2. Create your ToDo List. \n");
+    }
     printf("\n\t\t\t\t\t\t 3. Delete your ToDo List. \n");
-    printf("\n\t\t\t\t\t\t 4. Update your ToDo List. \n");
-    printf("\n\t\t\t\t\t\t 5. Exit ");
+    printf("\n\t\t\t\t\t\t 4. Exit ");
     printf("\n\t\t\t\t\t\t");
     printf("\n\t\t\t\t\t\t");
     printf("\n\t\t\t\t\t\t Enter your choice \n\t\t\t\t\t\t --> ");
