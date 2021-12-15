@@ -66,16 +66,21 @@ int listExists(){
     */ 
     return (start not_equ NULL);
 }
-void delay(int number_of_seconds){
+void delay(int number_of_milli_seconds){
+
+    clock_t start_t, end_t, total_t;
     // Converting time into milli_seconds
-    int milli_seconds = 1000 * number_of_seconds;
+    start_t = clock();
+    end_t = clock();
+    total_t = (double)(end_t - start_t) / CLOCKS_PER_SEC;
+    double time_in_seconds = number_of_milli_seconds/1000;
 
-    // Storing start time
-    clock_t start_time = clock();
+    while (total_t < time_in_seconds){ // looping till required time is not achieved
+           end_t = clock();
+           total_t = (double)(end_t - start_t) / CLOCKS_PER_SEC;
+       }
 
-    // looping till required time is not achieved
-    while (clock() < start_time + milli_seconds)
-        ;
+
 }
 
 void wlcScreen(){
@@ -166,13 +171,13 @@ void wlcScreen(){
     while(1){
         int i=0;
         system("color f1");
-        delay(1);
+        delay(1000);
         system("color f2");
-        delay(1);
+        delay(1000);
         system("color f4");
-        delay(1);
+        delay(1000);
         system("color f0");
-        delay(1);
+        delay(1000);
         i++;
         if(i equ 1){
             break;
