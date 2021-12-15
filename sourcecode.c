@@ -14,7 +14,7 @@
 
 void delay(int number_of_seconds);
 void wlcScreen();
-void seeTodo();
+void seeTodo(int do_pause);
 void CreateTodo();
 void fixcount();
 void DeleteTodo();
@@ -41,7 +41,7 @@ void main(){
         choice = mainMenu();
         switch(choice){
         case 1:
-            seeTodo();
+            seeTodo(1);
             break;
         case 2:
             if (listExists())
@@ -217,7 +217,7 @@ int mainMenu(){
     return choice;
 }
 
-void seeTodo(){
+void seeTodo(int do_pause){
     system("cls");
     todo *temp;
     temp = start;
@@ -236,6 +236,7 @@ void seeTodo(){
         }
     }
     printf("\n\t\t\t\t\t\t");
+    if (do_pause)
     system("pause");
 
 }
@@ -299,6 +300,7 @@ void fixcount(){
 void DeleteTodo(){
     system("cls");
     if(start not_equ NULL){
+    seeTodo(0);
     int a;
     todo *ptr,*ptr1;   // points to starting list
      // points to next list for tracing
