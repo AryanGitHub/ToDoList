@@ -73,7 +73,7 @@ void delay(int number_of_milli_seconds){
     start_t = clock();
     end_t = clock();
     total_t = (double)(end_t - start_t) / CLOCKS_PER_SEC;
-    double time_in_seconds = number_of_milli_seconds/1000;
+    double time_in_seconds = number_of_milli_seconds/1000.0;
 
     while (total_t < time_in_seconds){ // looping till required time is not achieved
            end_t = clock();
