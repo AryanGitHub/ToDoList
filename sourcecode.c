@@ -1,6 +1,8 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<time.h>
+#include<string.h>
+#include<windows.h>
 #define p printf
 #define s scanf
 #define and &&
@@ -12,7 +14,9 @@
 #define great_equ >=
 #define less_equ <=
 
-void delay(int number_of_seconds);
+
+void change_color(char* color);
+void color_animation(char color_list[][3], int* time_list, int n);
 void wlcScreen();
 void seeTodo(int do_pause);
 void CreateTodo();
@@ -66,21 +70,22 @@ int listExists(){
     */ 
     return (start not_equ NULL);
 }
-void delay(int number_of_milli_seconds){
 
-    clock_t start_t, end_t, total_t;
-    // Converting time into milli_seconds
-    start_t = clock();
-    end_t = clock();
-    total_t = (double)(end_t - start_t) / CLOCKS_PER_SEC;
-    double time_in_seconds = number_of_milli_seconds/1000;
-
-    while (total_t < time_in_seconds){ // looping till required time is not achieved
-           end_t = clock();
-           total_t = (double)(end_t - start_t) / CLOCKS_PER_SEC;
-       }
+void change_color(char* color){
+    char finalcommand[100]="color ";
+    strcat(finalcommand,color);
+    system(finalcommand);
+}
 
 
+void color_animation(char color_list[][3], int* time_list, int n){
+int i =0;
+for (;i<n;i++){
+//char color[3] = *(color_list+i);
+change_color(color_list[i]);
+//delay(*(time_list+i));
+Sleep(*(time_list+i));
+}
 }
 
 void wlcScreen(){
@@ -167,23 +172,9 @@ void wlcScreen(){
     // tenth line
     printf("\n\t\t\t\t\t\t\t   |");
 
-
-    while(1){
-        int i=0;
-        system("color f1");
-        delay(1000);
-        system("color f2");
-        delay(1000);
-        system("color f4");
-        delay(1000);
-        system("color f0");
-        delay(1000);
-        i++;
-        if(i equ 1){
-            break;
-        }
-
-    }
+    char color_list[4][3]= {"f1","f2","f4","f0"};
+    int time_list[4]={1000,1000,1000,1000};
+    color_animation(color_list,time_list, 4);
 
 
 
@@ -218,6 +209,12 @@ int mainMenu(){
     printf("\n\t\t\t\t\t\t");
     printf("\n\t\t\t\t\t\t");
     printf("\n\t\t\t\t\t\t Enter your choice \n\t\t\t\t\t\t --> ");
+
+
+        char color_list[4][3]= {"f1","f2","f4","f0"};
+        int time_list[4]={100,100,100,100};
+    color_animation(color_list,time_list, 4);
+
     scanf("%d",&choice);
     return choice;
 }
