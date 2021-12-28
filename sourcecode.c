@@ -19,10 +19,9 @@ void change_color(char* color);
 void color_animation(char color_list[][3], int* time_list, int n);
 void wlcScreen();
 void seeTodo(int do_pause);
-void CreateTodo();
+void CreateOrUpdateTodo();
 void fixcount();
 void DeleteTodo();
-void updateTodo();
 int listExists();
 void chooseColor();
 int mainMenu();
@@ -34,7 +33,7 @@ struct todo{
     struct todo* next;
 };
 
-struct todo *start= NULL;
+static struct todo *start= NULL;
 
 void main(){
     int choice;
@@ -49,10 +48,7 @@ void main(){
             seeTodo(1);
             break;
         case 2:
-            if (listExists())
-                updateTodo();
-            else
-                CreateTodo();
+            CreateOrUpdateTodo();
             break;
         case 3:
             DeleteTodo();
@@ -273,11 +269,57 @@ void seeTodo(int do_pause){
 
 }
 
-void CreateTodo(){
+struct todo* todoNodeCpy (struct todo* todoNode1 , struct todo* todoNode2){
+
+    strcpy (todoNode1->data, todoNode2->data);
+    return todoNode1;
+}
+
+struct todo* creatNewNode(){
+    struct todo* newNode = (struct todo*) malloc(1*sizeof(struct todo));
+    newNode->next = NULL;
+    return newNode;
+}
+
+struct todo* addNode(struct todo* todoNode){
+    struct todo* creatNewNode();
+
+    todoNode->next = creatNewNode();
+    return todoNode->next;
+}
+
+struct todo* addNextNode (struct todo* todoNode, struct todo element){
+    struct todo* getLastNode(struct todo* todoNode);
+    struct todo* addNode(struct todo* todoNode);
+    struct todo* todoNodeCpy (struct todo* todoNode1 , struct todo* todoNode2);
+
+    struct todo* lastNode = getLastNode(todoNode);
+    int lastNodeCountValue = lastNode->count;
+    lastNode = addNode(lastNode);
+    todoNodeCpy(lastNode,&element);
+    lastNode->count = ++lastNodeCountValue;
+    return lastNode;
+}
+
+struct todo* getNextNode(struct todo* todoNode) {
+    return todoNode->next;
+}
+
+struct todo* getLastNode(struct todo* todoNode){
+    struct todo* getNextNode(struct todo* todoNode);
+    struct todo* nextNode = getNextNode(todoNode);
+    if (nextNode == NULL) return todoNode;
+    else return getLastNode(nextNode);
+}
+
+
+void CreateOrUpdateTodo(){
+    struct todo* creatNewNode();
+    struct todo* addNextNode (struct todo* todoNode, struct todo element);
 
     char a[500];
-    struct todo *ptr , *ptr2;
     system("cls");
+
     while(1){
         printf("\n\t\t\t\t\t\t Want to add? y/n \n\t\t\t\t\t\t -->");
         fflush(stdin);
@@ -287,26 +329,24 @@ void CreateTodo(){
         {
             if(start equ NULL)
             {
-                ptr = (struct todo *)calloc(1,sizeof(struct todo));
-                start = ptr;
+                start = creatNewNode();
+                start->count = 1;
                 printf("\n\t\t\t\t\t\t Write 1st list here \n\t\t\t\t\t\t --> ");
                 fflush(stdin);
-                gets(ptr->data);
-                ptr->count = 1;
-                start->next = NULL;
+                gets(start->data);
+                
+                
             }
             else
             {
-                ptr2 = (struct todo *)calloc(1, sizeof(struct todo));
+
+               
                 printf("\n\t\t\t\t\t\t Write another list here \n\t\t\t\t\t\t --> ");
                 fflush(stdin);
-                gets(ptr2->data);
-
-                ptr2->next=NULL;
-                ptr->next = ptr2;
-                ptr = ptr->next; //just like i++ for increment
+                struct todo tempNode;
+                gets(tempNode.data);
+                addNextNode (start,tempNode);
             }
-            fixcount();
         }
         if(a[0]=='n'&& a[1]=='\0')
         {
@@ -375,34 +415,3 @@ void DeleteTodo(){
     }
 }
 
-void updateTodo(){
-    system("cls");
-    struct todo *ptr, *ptr1;
-    char a[1000];
-    while(1)
-    {
-        printf("\n\t\t\t\t\t\t Want to add ? y/n \n\t\t\t\t\t\t --> ");
-        fflush(stdin);
-        s("%s",a);
-        if(a[0]=='n'&& a[1]=='\0')
-        {
-            break;
-        }
-        if(a[0] equ 'y' && a[1] equ '\0'){
-        printf("\n\t\t\t\t\t\t Write here \n\t\t\t\t\t\t -->");
-        ptr = (struct todo *)calloc(1, sizeof(struct todo));
-        fflush(stdin);
-        gets(ptr->data);
-        ptr->next = NULL;
-        ptr1 = start;
-        while(ptr1->next not_equ NULL)
-        {
-            ptr1=ptr1->next;
-        }
-        ptr1->next=ptr;
-        fixcount();
-        }
-    }
-    printf("\n\t\t\t\t\t\t");
-    //system("pause");
-}
