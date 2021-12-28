@@ -41,6 +41,10 @@ void main(){
     int choice;
     //system("pause");
     wlcScreen();
+    system("cls");
+  system("cls");
+    choosecolor();
+
     while(1){
         choice = mainMenu();
         switch(choice){
@@ -67,7 +71,7 @@ int listExists(){
     /*
     returns 1 if list already exist
     otherwise it returns 0
-    */ 
+    */
     return (start not_equ NULL);
 }
 
@@ -172,22 +176,44 @@ void wlcScreen(){
     // tenth line
     printf("\n\t\t\t\t\t\t\t   |");
 
-    char color_list[4][3]= {"f1","f2","f4","f0"};
-    int time_list[4]={1000,1000,1000,1000};
-    color_animation(color_list,time_list, 4);
+    char color_list[8][3]= {"f1","f2","f4","f0","f4","f3","f2","f1"};
+    int time_list[8]={100,100,100,100,100,100,100,100};
+
+    color_animation(color_list,time_list, 8);
 
 
 
     //printf("\n\n\n\n\n");
     printf("\n\n\n\t\t\t\t\t      ");
+
     system("pause");
 }
-
+int choosecolor(){
+    int ccc;
+  printf("\n\n\n\n\n\n\n\n\n\n\n                                            WHICH FONT COLOR FONT YOU WANT TO BE YOUR MAIN\n                                            1-BLUE 2-GREEN 3-RED 4-PURPLE : ");
+    scanf("%d",&ccc);
+    if(ccc==1){
+    system("color f1");
+}
+else if(ccc==2)
+{
+    system("color f2");
+}
+else if(ccc==3)
+{
+    system("color f4");
+}
+else if(ccc==4)
+{
+    system("color f5");
+}
+return 0;
+}
 
 int mainMenu(){
     int choice;
-    
-    system("color f0");
+
+
     system("cls");
     //
     struct tm* ptr;
@@ -209,11 +235,6 @@ int mainMenu(){
     printf("\n\t\t\t\t\t\t");
     printf("\n\t\t\t\t\t\t");
     printf("\n\t\t\t\t\t\t Enter your choice \n\t\t\t\t\t\t --> ");
-
-
-        char color_list[4][3]= {"f1","f2","f4","f0"};
-        int time_list[4]={100,100,100,100};
-    color_animation(color_list,time_list, 4);
 
     scanf("%d",&choice);
     return choice;
@@ -252,7 +273,7 @@ void CreateTodo(){
         printf("\n\t\t\t\t\t\t Want to add? y/n \n\t\t\t\t\t\t -->");
         fflush(stdin);
         s("%s",a);
-        
+
         if(a[0] equ'y' && a[1] equ '\0')
         {
             if(start equ NULL)
@@ -376,37 +397,3 @@ void updateTodo(){
     printf("\n\t\t\t\t\t\t");
     //system("pause");
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
