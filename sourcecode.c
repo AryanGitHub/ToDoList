@@ -24,6 +24,7 @@ void fixcount();
 void DeleteTodo();
 void updateTodo();
 int listExists();
+void chooseColor();
 int mainMenu();
 
 
@@ -42,8 +43,7 @@ void main(){
     //system("pause");
     wlcScreen();
     system("cls");
-  system("cls");
-    choosecolor();
+    
 
     while(1){
         choice = mainMenu();
@@ -61,6 +61,9 @@ void main(){
             DeleteTodo();
             break;
         case 4:
+            chooseColor();
+            break;    
+        case 5:
             system("cls");
             exit(0);
         }
@@ -188,26 +191,34 @@ void wlcScreen(){
 
     system("pause");
 }
-int choosecolor(){
-    int ccc;
-  printf("\n\n\n\n\n\n\n\n\n\n\n                                            WHICH FONT COLOR FONT YOU WANT TO BE YOUR MAIN\n                                            1-BLUE 2-GREEN 3-RED 4-PURPLE : ");
-    scanf("%d",&ccc);
-    if(ccc==1){
-    system("color f1");
-}
-else if(ccc==2)
-{
-    system("color f2");
-}
-else if(ccc==3)
-{
-    system("color f4");
-}
-else if(ccc==4)
-{
-    system("color f5");
-}
-return 0;
+void chooseColor(){
+    system("cls");
+    int colorNumber;
+  printf("\n\n\n\n\n\n\n\n\n\n\n                                            WHICH FONT COLOR FONT YOU WANT TO BE YOUR MAIN\n                                              1-BLUE 2-GREEN 3-RED 4-PURPLE : ");
+    scanf("%d",&colorNumber);
+    if(colorNumber==1){
+    change_color("f1");
+    }
+else if(colorNumber==2)
+    {
+    change_color("f2");
+    }
+else if(colorNumber==3)
+    {
+    change_color("f4");
+    }
+else if(colorNumber==4)
+    {
+    change_color("f5");
+    }
+else {
+     printf("\n\n\n\n\n\n\n\n\n\n\n                                            Invalid Response.\n");
+     printf("\n\n\n\n\n\n\n\n\n\n\n                                            Try Again in 3 seconds.\n");
+     Sleep(3000);
+     chooseColor();
+ }
+
+
 }
 
 int mainMenu(){
@@ -231,7 +242,8 @@ int mainMenu(){
         printf("\n\t\t\t\t\t\t 2. Create your ToDo List. \n");
     }
     printf("\n\t\t\t\t\t\t 3. Delete your ToDo List. \n");
-    printf("\n\t\t\t\t\t\t 4. Exit ");
+    printf("\n\t\t\t\t\t\t 4. Change Font Color \n");
+    printf("\n\t\t\t\t\t\t 5. Exit ");
     printf("\n\t\t\t\t\t\t");
     printf("\n\t\t\t\t\t\t");
     printf("\n\t\t\t\t\t\t Enter your choice \n\t\t\t\t\t\t --> ");
