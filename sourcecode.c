@@ -28,19 +28,16 @@ void chooseColor();
 int mainMenu();
 
 
-typedef struct ToDo todo;
-
-struct ToDo{
+struct todo{
     int count;
     char data[50];
-    todo *next;
+    struct todo* next;
 };
 
-todo *start= NULL;
+struct todo *start= NULL;
 
 void main(){
     int choice;
-    //system("pause");
     wlcScreen();
     system("cls");
     
@@ -197,25 +194,25 @@ void chooseColor(){
   printf("\n\n\n\n\n\n\n\n\n\n\n                                            WHICH FONT COLOR FONT YOU WANT TO BE YOUR MAIN\n                                              1-BLUE 2-GREEN 3-RED 4-PURPLE : ");
     scanf("%d",&colorNumber);
     if(colorNumber==1){
-    change_color("f1");
+        change_color("f1");
     }
-else if(colorNumber==2)
+    else if(colorNumber==2)
     {
-    change_color("f2");
+        change_color("f2");
     }
-else if(colorNumber==3)
+    else if(colorNumber==3)
     {
-    change_color("f4");
+        change_color("f4");
     }
-else if(colorNumber==4)
+    else if(colorNumber==4)
     {
-    change_color("f5");
+        change_color("f5");
     }
-else {
-     printf("\n\n\n\n\n\n\n\n\n\n\n                                            Invalid Response.\n");
-     printf("\n\n\n\n\n\n\n\n\n\n\n                                            Try Again in 3 seconds.\n");
-     Sleep(3000);
-     chooseColor();
+    else {
+        printf("\n\n\n\n\n\n\n\n\n\n\n                                            Invalid Response.\n");
+        printf("\n\n\n\n\n\n\n\n\n\n\n                                            Try Again in 3 seconds.\n");
+        Sleep(3000);
+        chooseColor();
  }
 
 
@@ -254,7 +251,7 @@ int mainMenu(){
 
 void seeTodo(int do_pause){
     system("cls");
-    todo *temp;
+    struct todo *temp;
     temp = start;
     if(start equ NULL)
     {
@@ -267,7 +264,7 @@ void seeTodo(int do_pause){
             printf("\n\t\t\t\t\t\t %d . ",temp->count);
             puts(temp->data);
             fflush(stdin);
-            temp= temp->next;
+            temp = (temp->next);
         }
     }
     printf("\n\t\t\t\t\t\t");
@@ -279,7 +276,7 @@ void seeTodo(int do_pause){
 void CreateTodo(){
 
     char a[500];
-    todo *ptr , *ptr2;
+    struct todo *ptr , *ptr2;
     system("cls");
     while(1){
         printf("\n\t\t\t\t\t\t Want to add? y/n \n\t\t\t\t\t\t -->");
@@ -290,7 +287,7 @@ void CreateTodo(){
         {
             if(start equ NULL)
             {
-                ptr = (todo *)calloc(1,sizeof(todo));
+                ptr = (struct todo *)calloc(1,sizeof(struct todo));
                 start = ptr;
                 printf("\n\t\t\t\t\t\t Write 1st list here \n\t\t\t\t\t\t --> ");
                 fflush(stdin);
@@ -300,7 +297,7 @@ void CreateTodo(){
             }
             else
             {
-                ptr2 = (todo *)calloc(1, sizeof(todo));
+                ptr2 = (struct todo *)calloc(1, sizeof(struct todo));
                 printf("\n\t\t\t\t\t\t Write another list here \n\t\t\t\t\t\t --> ");
                 fflush(stdin);
                 gets(ptr2->data);
@@ -321,7 +318,7 @@ void CreateTodo(){
 }
 
 void fixcount(){
-    todo *ptr;
+    struct todo *ptr;
     int i=1;
     ptr = start;
     while(ptr not_equ NULL)
@@ -337,7 +334,7 @@ void DeleteTodo(){
     if(start not_equ NULL){
     seeTodo(0);
     int a;
-    todo *ptr,*ptr1;   // points to starting list
+    struct todo *ptr,*ptr1;   // points to starting list
      // points to next list for tracing
     printf("\n\t\t\t\t\t\t Enter the number you want to delete \n\t\t\t\t\t\t --> ");
     s("%d",&a);
@@ -380,7 +377,7 @@ void DeleteTodo(){
 
 void updateTodo(){
     system("cls");
-    todo *ptr, *ptr1;
+    struct todo *ptr, *ptr1;
     char a[1000];
     while(1)
     {
@@ -393,7 +390,7 @@ void updateTodo(){
         }
         if(a[0] equ 'y' && a[1] equ '\0'){
         printf("\n\t\t\t\t\t\t Write here \n\t\t\t\t\t\t -->");
-        ptr = (todo *)calloc(1, sizeof(todo));
+        ptr = (struct todo *)calloc(1, sizeof(struct todo));
         fflush(stdin);
         gets(ptr->data);
         ptr->next = NULL;
