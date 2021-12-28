@@ -24,6 +24,7 @@ void fixcount();
 void DeleteTodo();
 void updateTodo();
 int listExists();
+void chooseColor();
 int mainMenu();
 
 
@@ -41,6 +42,9 @@ void main(){
     int choice;
     //system("pause");
     wlcScreen();
+    system("cls");
+    
+
     while(1){
         choice = mainMenu();
         switch(choice){
@@ -57,6 +61,9 @@ void main(){
             DeleteTodo();
             break;
         case 4:
+            chooseColor();
+            break;    
+        case 5:
             system("cls");
             exit(0);
         }
@@ -67,7 +74,7 @@ int listExists(){
     /*
     returns 1 if list already exist
     otherwise it returns 0
-    */ 
+    */
     return (start not_equ NULL);
 }
 
@@ -172,22 +179,52 @@ void wlcScreen(){
     // tenth line
     printf("\n\t\t\t\t\t\t\t   |");
 
-    char color_list[4][3]= {"f1","f2","f4","f0"};
-    int time_list[4]={1000,1000,1000,1000};
-    color_animation(color_list,time_list, 4);
+    char color_list[8][3]= {"f1","f2","f4","f0","f4","f3","f2","f1"};
+    int time_list[8]={100,100,100,100,100,100,100,100};
+
+    color_animation(color_list,time_list, 8);
 
 
 
     //printf("\n\n\n\n\n");
     printf("\n\n\n\t\t\t\t\t      ");
+
     system("pause");
 }
+void chooseColor(){
+    system("cls");
+    int colorNumber;
+  printf("\n\n\n\n\n\n\n\n\n\n\n                                            WHICH FONT COLOR FONT YOU WANT TO BE YOUR MAIN\n                                              1-BLUE 2-GREEN 3-RED 4-PURPLE : ");
+    scanf("%d",&colorNumber);
+    if(colorNumber==1){
+    change_color("f1");
+    }
+else if(colorNumber==2)
+    {
+    change_color("f2");
+    }
+else if(colorNumber==3)
+    {
+    change_color("f4");
+    }
+else if(colorNumber==4)
+    {
+    change_color("f5");
+    }
+else {
+     printf("\n\n\n\n\n\n\n\n\n\n\n                                            Invalid Response.\n");
+     printf("\n\n\n\n\n\n\n\n\n\n\n                                            Try Again in 3 seconds.\n");
+     Sleep(3000);
+     chooseColor();
+ }
 
+
+}
 
 int mainMenu(){
     int choice;
-    
-    system("color f0");
+
+
     system("cls");
     //
     struct tm* ptr;
@@ -205,15 +242,11 @@ int mainMenu(){
         printf("\n\t\t\t\t\t\t 2. Create your ToDo List. \n");
     }
     printf("\n\t\t\t\t\t\t 3. Delete your ToDo List. \n");
-    printf("\n\t\t\t\t\t\t 4. Exit ");
+    printf("\n\t\t\t\t\t\t 4. Change Font Color \n");
+    printf("\n\t\t\t\t\t\t 5. Exit ");
     printf("\n\t\t\t\t\t\t");
     printf("\n\t\t\t\t\t\t");
     printf("\n\t\t\t\t\t\t Enter your choice \n\t\t\t\t\t\t --> ");
-
-
-        char color_list[4][3]= {"f1","f2","f4","f0"};
-        int time_list[4]={100,100,100,100};
-    color_animation(color_list,time_list, 4);
 
     scanf("%d",&choice);
     return choice;
@@ -252,7 +285,7 @@ void CreateTodo(){
         printf("\n\t\t\t\t\t\t Want to add? y/n \n\t\t\t\t\t\t -->");
         fflush(stdin);
         s("%s",a);
-        
+
         if(a[0] equ'y' && a[1] equ '\0')
         {
             if(start equ NULL)
@@ -376,37 +409,3 @@ void updateTodo(){
     printf("\n\t\t\t\t\t\t");
     //system("pause");
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
