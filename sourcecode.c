@@ -374,39 +374,32 @@ void DeleteTodo(){
     if(start not_equ NULL){
     seeTodo(0);
     int a;
-    struct todo *ptr,*ptr1;   // points to starting list
-     // points to next list for tracing
-    printf("\n\t\t\t\t\t\t Enter the number you want to delete \n\t\t\t\t\t\t --> ");
+    int flagFound = 0;
+    printf("\n\t\t\t\t\t\t Enter the Index you want to delete \n\t\t\t\t\t\t --> ");
     s("%d",&a);
 
-    ptr = start;
-    ptr1 = start->next;
-    while(1)
+    struct todo* loopCounter = start;
+    while(loopCounter -> next not_equ NULL)
     {
-        // first condition
-        // if we want to delete fist node
-        if(ptr->count equ a)
-        {
-            start=start->next;
-            free(ptr);
-            fixcount();
-            break;
-        }
-        // second condition
-        // if we want to delete other node
-        if(ptr1->count equ a)
-        {
-            ptr->next=ptr1->next;
-            free(ptr1);
-            fixcount();
-            break;
-        }
-        else
-        {
-            ptr = ptr1;
-            ptr1 = ptr1->next;
-        }
 
+        if(loopCounter->next->count equ a)
+        {
+            struct todo* NodeToDelete = loopCounter->next;
+            loopCounter->next = NodeToDelete->next;
+            free(NodeToDelete);
+            flagFound =1;
+            break;
+        }
+        
+        loopCounter = loopCounter->next;
+
+    }
+    if (!flagFound){
+        printf("\n\t\t\t\t\t\t Index Not Found. \n\t\t\t\t\t\t");
+        system ("pause");
+    }
+    else{
+        fixcount();
     }
 }
     else {
