@@ -3,19 +3,10 @@
 #include<time.h>
 #include<string.h>
 #include<windows.h>
-#define p printf
-#define s scanf
-#define and &&
-#define or ||
-#define equ ==
-#define not_equ !=
-#define greater >
-#define less <
-#define great_equ >=
-#define less_equ <=
 
 
-void change_color(char* color);
+void change_fontcolor(char* color);
+void change_bgcolor(char* color);
 void color_animation(char color_list[][3], int* time_list, int n);
 void wlcScreen();
 void seeTodo(int do_pause);
@@ -68,10 +59,10 @@ int listExists(){
     returns 1 if list already exist
     otherwise it returns 0
     */
-    return (start not_equ NULL);
+    return (start != NULL);
 }
 
-void change_color(char* color){
+void change_fontcolor(char* color){
     char finalcommand[100]="color ";
     strcat(finalcommand,color);
     system(finalcommand);
@@ -82,7 +73,7 @@ void color_animation(char color_list[][3], int* time_list, int n){
 int i =0;
 for (;i<n;i++){
 //char color[3] = *(color_list+i);
-change_color(color_list[i]);
+change_fontcolor(color_list[i]);
 //delay(*(time_list+i));
 Sleep(*(time_list+i));
 }
@@ -190,19 +181,19 @@ void chooseColor(){
   printf("\n\n\n\n\n\n\n\n\n\n\n                                            WHICH FONT COLOR FONT YOU WANT TO BE YOUR MAIN\n                                              1-BLUE 2-GREEN 3-RED 4-PURPLE : ");
     scanf("%d",&colorNumber);
     if(colorNumber==1){
-        change_color("f1");
+        change_fontcolor("f1");
     }
     else if(colorNumber==2)
     {
-        change_color("f2");
+        change_fontcolor("f2");
     }
     else if(colorNumber==3)
     {
-        change_color("f4");
+        change_fontcolor("f4");
     }
     else if(colorNumber==4)
     {
-        change_color("f5");
+        change_fontcolor("f5");
     }
     else {
         printf("\n\n\n\n\n\n\n\n\n\n\n                                            Invalid Response.\n");
@@ -249,13 +240,13 @@ void seeTodo(int do_pause){
     system("cls");
     struct todo *temp;
     temp = start;
-    if(start equ NULL)
+    if(start == NULL)
     {
         printf("\n\t\t\t\t\t\t Empty list");
     }
     else
     {
-        while(temp not_equ NULL)
+        while(temp != NULL)
         {
             printf("\n\t\t\t\t\t\t %d . ",temp->count);
             puts(temp->data);
@@ -323,11 +314,11 @@ void CreateOrUpdateTodo(){
     while(1){
         printf("\n\t\t\t\t\t\t Want to add? y/n \n\t\t\t\t\t\t -->");
         fflush(stdin);
-        s("%s",a);
+        scanf("%s",a);
 
-        if(a[0] equ'y' && a[1] equ '\0')
+        if(a[0] =='y' && a[1] == '\0')
         {
-            if(start equ NULL)
+            if(start == NULL)
             {
                 start = creatNewNode();
                 start->count = 1;
@@ -361,7 +352,7 @@ void fixcount(){
     struct todo *ptr;
     int i=1;
     ptr = start;
-    while(ptr not_equ NULL)
+    while(ptr != NULL)
     {
         ptr->count = i;
         i++;
@@ -371,18 +362,18 @@ void fixcount(){
 
 void DeleteTodo(){
     system("cls");
-    if(start not_equ NULL){
+    if(start != NULL){
     seeTodo(0);
     int a;
     int flagFound = 0;
     printf("\n\t\t\t\t\t\t Enter the Index you want to delete \n\t\t\t\t\t\t --> ");
-    s("%d",&a);
+    scanf("%d",&a);
 
     struct todo* loopCounter = start;
-    while(loopCounter -> next not_equ NULL)
+    while(loopCounter -> next != NULL)
     {
 
-        if(loopCounter->next->count equ a)
+        if(loopCounter->next->count == a)
         {
             struct todo* NodeToDelete = loopCounter->next;
             loopCounter->next = NodeToDelete->next;
