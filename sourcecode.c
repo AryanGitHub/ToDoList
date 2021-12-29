@@ -5,8 +5,7 @@
 #include<windows.h>
 
 
-void change_fontcolor(char* color);
-void change_bgcolor(char* color);
+void changeColor(char* color);
 void color_animation(char color_list[][3], int* time_list, int n);
 void wlcScreen();
 void seeTodo(int do_pause);
@@ -62,7 +61,7 @@ int listExists(){
     return (start != NULL);
 }
 
-void change_fontcolor(char* color){
+void changeColor(char* color){
     char finalcommand[100]="color ";
     strcat(finalcommand,color);
     system(finalcommand);
@@ -73,7 +72,7 @@ void color_animation(char color_list[][3], int* time_list, int n){
 int i =0;
 for (;i<n;i++){
 //char color[3] = *(color_list+i);
-change_fontcolor(color_list[i]);
+changeColor(color_list[i]);
 //delay(*(time_list+i));
 Sleep(*(time_list+i));
 }
@@ -177,30 +176,31 @@ void wlcScreen(){
 }
 void chooseColor(){
     system("cls");
-    int colorNumber;
-  printf("\n\n\n\n\n\n\n\n\n\n\n                                            WHICH FONT COLOR FONT YOU WANT TO BE YOUR MAIN\n                                              1-BLUE 2-GREEN 3-RED 4-PURPLE : ");
-    scanf("%d",&colorNumber);
-    if(colorNumber==1){
-        change_fontcolor("f1");
-    }
-    else if(colorNumber==2)
-    {
-        change_fontcolor("f2");
-    }
-    else if(colorNumber==3)
-    {
-        change_fontcolor("f4");
-    }
-    else if(colorNumber==4)
-    {
-        change_fontcolor("f5");
+    char colorInput[3];
+    printf("\n\n\n\n\n\n\n\n\n\n\n                                            WHICH COLOR YOU WANT?\n");
+    printf("%80s","Type Background letter folowed by Font letter.\n");
+    printf("%s","                                            0 = Black       8 = Gray\n");
+    printf("%s","                                            1 = Blue        9 = Light Blue\n");
+    printf("%s","                                            2 = Green       A = Light Green\n");
+    printf("%s","                                            3 = Aqua        B = Light Aqua\n");
+    printf("%s","                                            4 = Red         C = Light Red\n");
+    printf("%s","                                            5 = Purple      D = Light Purple\n");
+    printf("%s","                                            6 = Yellow      E = Light Yellow\n");
+    printf("%s","                                            7 = White       F = Bright White\n");
+    printf("%s","                                                           ");
+    scanf("%s",colorInput);
+
+    if ( (colorInput[0] >= '0' && colorInput[0] <= '9') || (colorInput[0] >= 'A' && colorInput[0] <= 'F') || (colorInput[0] >= 'a' && colorInput[0] <= 'f')){
+    if ( (colorInput[1] >= '0' && colorInput[1] <= '9') || (colorInput[1] >= 'A' && colorInput[1] <= 'F') || (colorInput[1] >= 'a' && colorInput[1] <= 'f')){
+                changeColor(colorInput);
+        }
     }
     else {
-        printf("\n\n\n\n\n\n\n\n\n\n\n                                            Invalid Response.\n");
-        printf("\n\n\n\n\n\n\n\n\n\n\n                                            Try Again in 3 seconds.\n");
+        printf("                                            Invalid Response.\n");
+        printf("                                            Try Again in 3 seconds.\n");
         Sleep(3000);
         chooseColor();
- }
+     }
 
 
 }
