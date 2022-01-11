@@ -3,6 +3,7 @@
 #include<time.h>
 #include<string.h>
 #include<windows.h>
+#include<conio.h>
 
 
 void changeColor(char* color);
@@ -15,6 +16,7 @@ void DeleteTodo();
 int listExists();
 void chooseColor();
 int mainMenu();
+void inputPassword( char* password);
 
 
 struct todo{
@@ -76,6 +78,25 @@ changeColor(color_list[i]);
 //delay(*(time_list+i));
 Sleep(*(time_list+i));
 }
+}
+
+void inputPassword( char* password)    
+/*
+    Author: Sai Kalyan Raju
+
+    Function Decryption: This function is used to hide the password with "*".
+*/.
+{
+  
+ int p=0;
+    do{
+        password[p]=getch();
+        if(password[p]!='\r')	      //"\r" is used to check when enter key is pressed. 
+	     printf("*");	      //It hides actual password with "*".
+        p++;
+    }while(password[p-1]!='\r');     //End of do while.
+    password[p-1]='\0';		     //To end the password string by null "\0" charecter.
+   
 }
 
 void wlcScreen(){
