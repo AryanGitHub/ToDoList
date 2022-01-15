@@ -6,25 +6,31 @@
 #include<conio.h>
 
 
-
+void changeColor(char* color);
+void color_animation(char color_list[][3], int* time_list, int n);
+void wlcScreen();
+void seeTodo(int do_pause);
+void CreateOrUpdateTodo();
 void fixcount();
 void DeleteTodo();
 int listExists();
 void chooseColor();
 int mainMenu();
 void inputPassword( char* password);
+void login();
 
 
 struct todo{
-    int count;
-    char data[50];
-    struct todo* next;
+    int count;                          // Used to index one task of the ToDo List
+    char data[50];                      // Used to store the task
+    struct todo* next;                  // Used to link next node of task
 };
 
-static struct todo *start= NULL;
+static struct todo *start= NULL;        // Used to create the head node of the Linked List (First Node)
 
 void main(){
     int choice;
+    login();  
     wlcScreen();
     system("cls");
 
@@ -59,20 +65,18 @@ int listExists(){
     return (start != NULL);
 }
 
-void changeColor(char* color){
-    char finalcommand[100]="color ";
-    strcat(finalcommand,color);
-    system(finalcommand);
+void changeColor(char* color){              // This function is used to change the color of the terminal
+    char finalcommand[100]="color ";        // Initial command string  
+    strcat(finalcommand,color);             // Concatenating color command string to the arguments
+    system(finalcommand);                   // Sending the final command to the Terminal to change the color
 }
 
 
-void color_animation(char color_list[][3], int* time_list, int n){
-int i =0;
+void color_animation(char color_list[][3], int* time_list, int n){    // This function is used for color transition animation in welcome screen
+int i =0;                                                              
 for (;i<n;i++){
-//char color[3] = *(color_list+i);
-changeColor(color_list[i]);
-//delay(*(time_list+i));
-Sleep(*(time_list+i));
+changeColor(color_list[i]);                                           // Used for changing color from the color list given in the code
+Sleep(*(time_list+i));                                                // Used for setting time delay between two color transition
 }
 }
 
@@ -93,6 +97,73 @@ void inputPassword( char* password)
     }while(password[p-1]!='\r');     //End of do while.
     password[p-1]='\0';		     //To end the password string by null "\0" charecter.
 
+}
+
+void login(){                      // Function used for entering username, password and providing access to ToDo List
+    system("color f0");  
+	int a=0,i=0;                   // here "a" is used for counting the unsucessful attempts 
+    char uname[10];
+    char pword[10];
+    char user[10]="live";          // Username used in ToDoList
+    char pass[10]="evil";          // Password used in ToDoList
+    do
+    {
+        system("color f0");
+        printf("\n  #--------------------------  LOGIN  --------------------------#  ");
+        printf("\n\n                          Enter Username: ");
+        scanf("%s", uname);
+        printf("\n                          Enter Password: ");
+		inputPassword(pword);                                              // Function used for hiding the user inputted password
+        if(strcmp(uname,user)==0 && strcmp(pword,pass)==0)
+        {
+            printf("\n\n\n  >>                     Login successful                      <<");
+            system("color f0");
+            Sleep(700);
+            system("cls");
+            system("color f0");
+            printf("\n  ---------------------------------------------------------  ");
+            printf("\n  >>>>>>>>>>>>  WELCOME TO EMPLOYEE DIRECTORY  <<<<<<<<<<<<  ");
+            printf("\n  ---------------------------------------------------------  ");
+ 
+            printf("\n\n                Initializing, please wait ");          // this is a cosmetic part to show a loading screen for some seconds
+            for(i=1; i<=9; i++)
+            {
+                printf(".");
+                Sleep(300);
+            }
+            printf("\n\n                Press any key to continue ...");
+            getch();
+            break;
+        }
+        else
+        {
+            system("color 0f");
+            printf("\n\n\n  !!                     Login unsuccessful                    !!");
+            printf("\n                     Press any key to try again                  ");
+            a++;                                 
+            getch();
+            system("cls");                       // clears the screen
+        }
+    }
+	while(a<=2);
+	{
+        if (a>2)
+        {
+            system("color 0f");
+            printf("\n  #--------------------------  ERROR  --------------------------# ");
+            printf("\n  !!!                                                         !!! ");
+            printf("\n  !!!        Directory Locked, too many wrong attempts        !!! ");
+            printf("\n  !!!                 Please read info.txt and                !!! ");
+            printf("\n  !!!                  re-execute the program                 !!! ");
+            printf("\n  !!!                                                         !!! ");
+            printf("\n  #-------------------------------------------------------------# \n");
+ 
+            printf("\n\n  Press any key to EXIT...");
+            getch();
+            exit(1); // unsuccessful exit
+        }
+	}
+    system("cls");
 }
 
 void wlcScreen(){
@@ -128,7 +199,7 @@ void wlcScreen(){
         printf("--%c",c);          //this prints a heart
     }
 
-    printf("    %cl %c  l l %c    ",c=195,c=137,c=153);
+    printf(" Welcome to ToDo List ");
 
 
 
@@ -278,7 +349,7 @@ void seeTodo(int do_pause){
     printf("\n\t\t\t\t\t\t");
     if (do_pause)
     system("pause");
-    mainmenu();
+    mainMenu();
 
 }
 
