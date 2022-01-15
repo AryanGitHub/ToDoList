@@ -6,11 +6,7 @@
 #include<conio.h>
 
 
-void changeColor(char* color);
-void color_animation(char color_list[][3], int* time_list, int n);
-void wlcScreen();
-void seeTodo(int do_pause);
-void CreateOrUpdateTodo();
+
 void fixcount();
 void DeleteTodo();
 int listExists();
@@ -31,7 +27,7 @@ void main(){
     int choice;
     wlcScreen();
     system("cls");
-    
+
 
     while(1){
         choice = mainMenu();
@@ -47,7 +43,7 @@ void main(){
             break;
         case 4:
             chooseColor();
-            break;    
+            break;
         case 5:
             system("cls");
             exit(0);
@@ -80,35 +76,36 @@ Sleep(*(time_list+i));
 }
 }
 
-void inputPassword( char* password)    
+void inputPassword( char* password)
 /*
     Author: Sai Kalyan Raju
 
     Function Decryption: This function is used to hide the password with "*".
-*/.
+*/
 {
-  
+
  int p=0;
     do{
         password[p]=getch();
-        if(password[p]!='\r')	      //"\r" is used to check when enter key is pressed. 
+        if(password[p]!='\r')	      //"\r" is used to check when enter key is pressed.
 	     printf("*");	      //It hides actual password with "*".
         p++;
     }while(password[p-1]!='\r');     //End of do while.
     password[p-1]='\0';		     //To end the password string by null "\0" charecter.
-   
+
 }
 
 void wlcScreen(){
-    system("color f0");
+  /* prints the UI of the welcome screen*/
+    system("color f0");          // changes the colour to black and white.
     char c;
-    system("cls");
+    system("cls");          // clears the screen.
     printf("\n\n\n\n      ");
 
     c=215;
-    printf("\n\t\t\t\t\t         /-+-+-+-+-+-+-+-+-+-\\");
-    printf("\n\t\t\t\t\t        /                     \\");
-    printf("\n\t\t\t\t\t       /                       \\");
+    printf("\n\t\t\t\t\t         /-+-+-+-+-+-+-+-+-+-\\");          // all these printf statments are being used to make the UI for the welcome screen.
+    printf("\n\t\t\t\t\t        /                     \\");          //the values which are being assigned to "char c" are ascii values.
+    printf("\n\t\t\t\t\t       /                       \\");           // which are used to achieve certain symbols and designs for the welcome screen.
     printf("\n\t\t\t\t\t      /                         \\");
     printf("\n\n");
 
@@ -120,15 +117,15 @@ void wlcScreen(){
 
 
     // second line
-    // diamonds
+
     c=4;
     for(int i=0; i<10; i++){
-        printf("-%c",c);
+        printf("-%c",c);          // this prints diamonds
     }
-    // heart
+
     c=3;
     for(int i=0; i<5; i++){
-        printf("--%c",c);
+        printf("--%c",c);          //this prints a heart
     }
 
     printf("    %cl %c  l l %c    ",c=195,c=137,c=153);
@@ -139,11 +136,11 @@ void wlcScreen(){
     // heart
     c=3;
     for(int i=0; i<4; i++){
-        printf("%c--",c);
+        printf("%c--",c);          //this prints a heart
     }
 
     printf("%c-",c);
-   // diamonds
+                              // this also prints diamonds
     c=4;
     for(int i=0; i<10; i++){
         printf("-%c",c);
@@ -193,15 +190,18 @@ void wlcScreen(){
     //printf("\n\n\n\n\n");
     printf("\n\n\n\t\t\t\t\t      ");
 
-    system("pause");
-}
+    system("pause");          //this will pause the program and say "Press any key to continue . . .", after pressing any key.
+}                             //the control exits the wlcScreen function and comes to void choosecolor().
 void chooseColor(){
-    system("cls");
+  /* chooseColor function let's  us deside in which color do we want the
+  UI to be in.
+  */
+    system("cls");          // clears the screen.
     char colorInput[3];
     printf("\n\n\n\n\n\n\n\n\n\n\n                                            WHICH COLOR YOU WANT?\n");
     printf("%80s","Type Background letter folowed by Font letter.\n");
     printf("%s","                                            0 = Black       8 = Gray\n");
-    printf("%s","                                            1 = Blue        9 = Light Blue\n");
+    printf("%s","                                            1 = Blue        9 = Light Blue\n");          //printing all the possible color's we can use in C language cmd.
     printf("%s","                                            2 = Green       A = Light Green\n");
     printf("%s","                                            3 = Aqua        B = Light Aqua\n");
     printf("%s","                                            4 = Red         C = Light Red\n");
@@ -209,18 +209,18 @@ void chooseColor(){
     printf("%s","                                            6 = Yellow      E = Light Yellow\n");
     printf("%s","                                            7 = White       F = Bright White\n");
     printf("%s","                                                           ");
-    scanf("%s",colorInput);
+    scanf("%s",colorInput);                                                                                //taking input from the user.
 
     if ( (colorInput[0] >= '0' && colorInput[0] <= '9') || (colorInput[0] >= 'A' && colorInput[0] <= 'F') || (colorInput[0] >= 'a' && colorInput[0] <= 'f')){
     if ( (colorInput[1] >= '0' && colorInput[1] <= '9') || (colorInput[1] >= 'A' && colorInput[1] <= 'F') || (colorInput[1] >= 'a' && colorInput[1] <= 'f')){
                 changeColor(colorInput);
-        }
+        }                                                  //cheching if the user has given a valid Input.
     }
     else {
-        printf("                                            Invalid Response.\n");
-        printf("                                            Try Again in 3 seconds.\n");
-        Sleep(3000);
-        chooseColor();
+        printf("                                            Invalid Response.\n");           //if the given input is not in the specified format, this else statment gets executed.
+        printf("                                            Try Again in 3 seconds.\n");    // and prints Invalid Response, and Try again in 3 Seconds.
+        Sleep(3000);                                                                       //this sleep(3000); function stops the program for 3000 milliseconds.
+        chooseColor();                                                                    //Again the chooseColor(); function is called so the user can have another try.
      }
 
 
@@ -230,20 +230,20 @@ int mainMenu(){
     int choice;
 
 
-    system("cls");
+    system("cls");          //clears the screen.
     //
     struct tm* ptr;
     time_t t;
-    t = time(NULL);
-    ptr = localtime(&t);
+    t = time(NULL);          //these five lines of code take the time as an input from windows.h(header file).
+    ptr = localtime(&t);    //And prints it on the main menu.
     printf("\n\n\n\n                                                 %s", asctime(ptr));
     //
     printf("\n\n\n\n\n\n\n\n");
-    printf("\n\t\t\t\t\t\t 1. See your ToDo List. \n");
-    if (listExists()){
-        printf("\n\t\t\t\t\t\t 2. Update your ToDo List. \n");
-    }
-    else {
+    printf("\n\t\t\t\t\t\t 1. See your ToDo List. \n");             //printing all the contents of the main menu.
+    if (listExists()){                                             // here in this if else stament if we have alredy created a todolist.
+        printf("\n\t\t\t\t\t\t 2. Update your ToDo List. \n");    //listExists(); fuctions returns "1" and if statment will be executed.
+    }                                                            //And prints update your todolist, in case if there is no todolist else stament get's executed.
+    else {                                                      //which prints create your todollist.
         printf("\n\t\t\t\t\t\t 2. Create your ToDo List. \n");
     }
     printf("\n\t\t\t\t\t\t 3. Delete your ToDo List. \n");
@@ -253,7 +253,7 @@ int mainMenu(){
     printf("\n\t\t\t\t\t\t");
     printf("\n\t\t\t\t\t\t Enter your choice \n\t\t\t\t\t\t --> ");
 
-    scanf("%d",&choice);
+    scanf("%d",&choice);          //takes input from the user and returns to void main();
     return choice;
 }
 
@@ -278,6 +278,7 @@ void seeTodo(int do_pause){
     printf("\n\t\t\t\t\t\t");
     if (do_pause)
     system("pause");
+    mainmenu();
 
 }
 
@@ -346,13 +347,13 @@ void CreateOrUpdateTodo(){
                 printf("\n\t\t\t\t\t\t Write 1st list here \n\t\t\t\t\t\t --> ");
                 fflush(stdin);
                 gets(start->data);
-                
-                
+
+
             }
             else
             {
 
-               
+
                 printf("\n\t\t\t\t\t\t Write another list here \n\t\t\t\t\t\t --> ");
                 fflush(stdin);
                 struct todo tempNode;
@@ -402,7 +403,7 @@ void DeleteTodo(){
             flagFound =1;
             break;
         }
-        
+
         loopCounter = loopCounter->next;
 
     }
