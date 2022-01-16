@@ -80,13 +80,13 @@ Sleep(*(time_list+i));                                                // Used fo
 }
 }
 
-void inputPassword( char* password)
+void inputPassword( char* password){
 /*
     Author: Sai Kalyan Raju
 
     Function Decryption: This function is used to hide the password with "*".
 */
-{
+
 
  int p=0;
     do{
@@ -141,7 +141,8 @@ void login(){                      // Function used for entering username, passw
             printf("\n\n\n  !!                     Login unsuccessful                    !!");
             printf("\n                     Press any key to try again                  ");
             a++;                                 
-            getch();
+            //getch();
+            system("pause");
             system("cls");                       // clears the screen
         }
     }
@@ -349,7 +350,6 @@ void seeTodo(int do_pause){
     printf("\n\t\t\t\t\t\t");
     if (do_pause)
     system("pause");
-    mainMenu();
 
 }
 
