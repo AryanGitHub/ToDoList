@@ -372,8 +372,8 @@ int mainMenu(){//sai
     time_t t;
     t = time(NULL);          //these five lines of code take the time as an input from windows.h(header file).
     ptr = localtime(&t);    //And prints it on the main menu.
-    printf("\n\n\n\n                                                 %s", asctime(ptr));
-    printf("\n\n\n\n\n\n\n\n");
+    printf("\n\n\n\n\n\n\n\n                                                 %s", asctime(ptr));
+    printf("\n\n");
     printf("\n\t\t\t\t\t\t 1. See your ToDo List. \n");             //printing all the contents of the main menu.
     if (listExists()){                                              // here in this if else stament if we have alredy created a todolist.
         printf("\n\t\t\t\t\t\t 2. Update your ToDo List. \n");      //listExists(); fuctions returns "1" and if statment will be executed.
