@@ -461,7 +461,16 @@ void DeleteTodo(){
     int flagFound = 0;
     printf("\n\t\t\t\t\t\t Enter the Index you want to delete \n\t\t\t\t\t\t --> ");
     scanf("%d",&a);
+    
+    if (a==1){
+         
+         struct todo* NodeToDelete = start;
+         start = start -> next;
+         free(NodeToDelete);
+         flagFound=1;
 
+    }
+    else {
     struct todo* loopCounter = start;
     while(loopCounter -> next != NULL)
     {
@@ -477,6 +486,7 @@ void DeleteTodo(){
 
         loopCounter = loopCounter->next;
 
+    }
     }
     if (!flagFound){
         printf("\n\t\t\t\t\t\t Index Not Found. \n\t\t\t\t\t\t");
