@@ -146,37 +146,37 @@ void login(){
     do
     {
         system("color f0");
-        printf("\n  #--------------------------  LOGIN  --------------------------#  ");
-        printf("\n\n                          Enter Username: ");
+        printf("\n\t\t\t  #--------------------------  LOGIN  --------------------------#  ");
+        printf("\n\n\t\t\t                          Enter Username: ");
         scanf("%s", uname);
-        printf("\n                          Enter Password: ");
+        printf("\n\t\t\t                          Enter Password: ");
 		inputPassword(pword);                                              // Function used for hiding the user inputted password
         if(strcmp(uname,user)==0 && strcmp(pword,pass)==0)
         {
-            printf("\n\n\n  >>                     Login successful                      <<");
+            printf("\n\n\n\t\t\t  >>                     Login successful                      <<");
             system("color f0");
             Sleep(700);
             system("cls");
             system("color f0");
-            printf("\n  ---------------------------------------------------------  ");
-            printf("\n  >>>>>>>>>>>>  WELCOME TO EMPLOYEE DIRECTORY  <<<<<<<<<<<<  ");
-            printf("\n  ---------------------------------------------------------  ");
+            printf("\n\t\t\t\t  ---------------------------------------------------------  ");
+            printf("\n\t\t\t\t  >>>>>>>>>>>>     WELCOME TO TODO LIST       <<<<<<<<<<<<  ");
+            printf("\n\t\t\t\t  ---------------------------------------------------------  ");
  
-            printf("\n\n                Initializing, please wait ");          // this is a cosmetic part to show a loading screen for some seconds
+            printf("\n\n\t\t\t\t                Initializing, please wait ");          // this is a cosmetic part to show a loading screen for some seconds
             for(i=1; i<=9; i++)
             {
                 printf(".");
                 Sleep(300);
             }
-            printf("\n\n                Press any key to continue ...");
+            printf("\n\n\t\t\t\t                Press any key to continue ...");
             getch();
             break;
         }
         else
         {
             system("color 0f");
-            printf("\n\n\n  !!                     Login unsuccessful                    !!");
-            printf("\n                     Press any key to try again                  ");
+            printf("\n\n\n\t\t\t  !!                     Login unsuccessful                    !!");
+            printf("\n\n\n\t\t\t\t\t");
             a++;                                 
             //getch();
             system("pause");
@@ -188,15 +188,15 @@ void login(){
         if (a>2)
         {
             system("color 0f");
-            printf("\n  #--------------------------  ERROR  --------------------------# ");
-            printf("\n  !!!                                                         !!! ");
-            printf("\n  !!!        Directory Locked, too many wrong attempts        !!! ");
-            printf("\n  !!!                 Please read info.txt and                !!! ");
-            printf("\n  !!!                  re-execute the program                 !!! ");
-            printf("\n  !!!                                                         !!! ");
-            printf("\n  #-------------------------------------------------------------# \n");
+            printf("\n\t\t\t  #--------------------------  ERROR  --------------------------# ");
+            printf("\n\t\t\t  !!!                                                         !!! ");
+            printf("\n\t\t\t  !!!               Todo list cannot be accesed.              !!! ");
+            printf("\n\t\t\t  !!!                 ToDo many wrong attempts                !!! ");
+            printf("\n\t\t\t  !!!                  Re-execute the program                 !!! ");
+            printf("\n\t\t\t  !!!                                                         !!! ");
+            printf("\n\t\t\t  #-------------------------------------------------------------# \n");
  
-            printf("\n\n  Press any key to EXIT...");
+            printf("\n\n\t\t\t\t\t  Press any key to EXIT...");
             getch();
             exit(1); // unsuccessful exit
         }
