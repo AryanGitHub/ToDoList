@@ -6,6 +6,7 @@
 #include<conio.h>
 
 
+
 void changeColor(char* color);
 void color_animation(char color_list[][3], int* time_list, int n);
 void wlcScreen();
@@ -20,19 +21,23 @@ void inputPassword( char* password);
 void login();
 
 
+
 struct todo{
     int count;                          // Used to index one task of the ToDo List
     char data[50];                      // Used to store the task
     struct todo* next;                  // Used to link next node of task
 };
 
+
 static struct todo *start= NULL;        // Used to create the head node of the Linked List (First Node)
 
+
+
 void main(){
-    int choice;
-    login();  
-    wlcScreen();
-    system("cls");
+     int choice;                         // store user choice
+     login();  
+     wlcScreen();
+     system("cls");
 
 
     while(1){
@@ -50,56 +55,88 @@ void main(){
         case 4:
             chooseColor();
             break;
-        case 5:
+        case 5:                            //for exit
             system("cls");
             exit(0);
         }
 
     }
 }
+
+
+
 int listExists(){
-    /*
-    returns 1 if list already exist
-    otherwise it returns 0
-    */
+   // returns 1 if list already exist, otherwise it returns 0
     return (start != NULL);
 }
 
-void changeColor(char* color){              // This function is used to change the color of the terminal
-    char finalcommand[100]="color ";        // Initial command string  
-    strcat(finalcommand,color);             // Concatenating color command string to the arguments
-    system(finalcommand);                   // Sending the final command to the Terminal to change the color
-}
 
 
-void color_animation(char color_list[][3], int* time_list, int n){    // This function is used for color transition animation in welcome screen
-int i =0;                                                              
-for (;i<n;i++){
-changeColor(color_list[i]);                                           // Used for changing color from the color list given in the code
-Sleep(*(time_list+i));                                                // Used for setting time delay between two color transition
-}
-}
+void changeColor(char* color){   
 
-void inputPassword( char* password){
+        /*
+        * Author: Mohith Vinayak     
+        *
+        * Function Description : This function is used to change the color of the terminal
+        */ 
+
+        char finalcommand[100]="color ";        // Initial command string  
+        strcat(finalcommand,color);             // Concatenating color command string to the arguments
+        system(finalcommand);                   // Sending the final command to the Terminal to change the color
+    }
+
+
+
+void color_animation(char color_list[][3], int* time_list, int n){
+
+        /*
+        * Author: Mohith Vinayak     
+        *
+        * Function Description : This function is used for color transition animation in welcome screen
+        */ 
+
+
+         int i =0;                                                              
+         for (;i<n;i++){
+                changeColor(color_list[i]);                                           // Used for changing color from the color list given in the code
+                Sleep(*(time_list+i));                                                // Used for setting time delay between two color transition
+          }
+    }
+
+
+
+void inputPassword( char* password){ 
 /*
-    Author: Sai Kalyan Raju
+    Author: Yashwardhan Khanna
 
-    Function Decryption: This function is used to hide the password with "*".
+    Function Description: This function is used to hide the password with "*".
 */
 
 
  int p=0;
     do{
-        password[p]=getch();
-        if(password[p]!='\r')	      //"\r" is used to check when enter key is pressed.
-	     printf("*");	      //It hides actual password with "*".
-        p++;
+            password[p]=getch();
+
+            if(password[p]!='\r')	      //"\r" is used to check when enter key is pressed.
+	            printf("*");	      //It hides actual password with "*".
+
+            p++;
     }while(password[p-1]!='\r');     //End of do while.
+
     password[p-1]='\0';		     //To end the password string by null "\0" charecter.
 
 }
 
-void login(){                      // Function used for entering username, password and providing access to ToDo List
+
+
+void login(){                      
+
+/*
+    Author: Yashwardhan Khanna
+
+    Function Description: Function used for entering username, password and providing access to ToDo List
+*/
+
     system("color f0");  
 	int a=0,i=0;                   // here "a" is used for counting the unsucessful attempts 
     char uname[10];
@@ -167,8 +204,16 @@ void login(){                      // Function used for entering username, passw
     system("cls");
 }
 
-void wlcScreen(){
-  /* prints the UI of the welcome screen*/
+
+
+void wlcScreen(){ 
+     /*
+     * Author: Sai Kalyan Raju
+     *
+     *
+     * Function Description : This function is used  prints the UI of the welcome screen
+     */ 
+
     system("color f0");          // changes the colour to black and white.
     char c;
     system("cls");          // clears the screen.
@@ -263,11 +308,19 @@ void wlcScreen(){
     printf("\n\n\n\t\t\t\t\t      ");
 
     system("pause");          //this will pause the program and say "Press any key to continue . . .", after pressing any key.
-}                             //the control exits the wlcScreen function and comes to void choosecolor().
-void chooseColor(){
-  /* chooseColor function let's  us deside in which color do we want the
-  UI to be in.
-  */
+}         //the control exits the wlcScreen function and comes to void choosecolor().
+
+
+
+void chooseColor(){  
+
+        /*
+        * Author: Mohith Vinayak     
+        *
+        * Function Description : chooseColor function let's  us deside in which color do we want the UI to be in.
+        */ 
+
+
     system("cls");          // clears the screen.
     char colorInput[3];
     printf("\n\n\n\n\n\n\n\n\n\n\n                                            WHICH COLOR YOU WANT?\n");
@@ -298,7 +351,17 @@ void chooseColor(){
 
 }
 
-int mainMenu(){
+
+
+int mainMenu(){//sai
+
+    /*
+     * Author: Sai Kalyan Raju
+     *
+     *
+     * Function Description : This function is used  prints Menu of the Todo list and returns a choice entered by user 
+     */ 
+
     int choice;
 
 
@@ -309,13 +372,12 @@ int mainMenu(){
     t = time(NULL);          //these five lines of code take the time as an input from windows.h(header file).
     ptr = localtime(&t);    //And prints it on the main menu.
     printf("\n\n\n\n                                                 %s", asctime(ptr));
-    //
     printf("\n\n\n\n\n\n\n\n");
     printf("\n\t\t\t\t\t\t 1. See your ToDo List. \n");             //printing all the contents of the main menu.
-    if (listExists()){                                             // here in this if else stament if we have alredy created a todolist.
-        printf("\n\t\t\t\t\t\t 2. Update your ToDo List. \n");    //listExists(); fuctions returns "1" and if statment will be executed.
-    }                                                            //And prints update your todolist, in case if there is no todolist else stament get's executed.
-    else {                                                      //which prints create your todollist.
+    if (listExists()){                                              // here in this if else stament if we have alredy created a todolist.
+        printf("\n\t\t\t\t\t\t 2. Update your ToDo List. \n");      //listExists(); fuctions returns "1" and if statment will be executed.
+    }                                                               //And prints update your todolist, in case if there is no todolist else stament get's executed.
+    else {                                                          //which prints create your todollist.
         printf("\n\t\t\t\t\t\t 2. Create your ToDo List. \n");
     }
     printf("\n\t\t\t\t\t\t 3. Delete your ToDo List. \n");
@@ -330,21 +392,28 @@ int mainMenu(){
 }
 
 void seeTodo(int do_pause){
+    /*
+     * Author: Aryan Pandey
+     *
+     *
+     * Function Description : This function is used to print the todo list along with its index number
+     *                          Also if do_pause is not 0 then it pause the seeTodo function. this is done to use seeTodo multiple places.
+     */
     system("cls");
     struct todo *temp;
     temp = start;
-    if(start == NULL)
+    if(start == NULL)              // checks if the list is empty
     {
         printf("\n\t\t\t\t\t\t Empty list");
     }
     else
     {
-        while(temp != NULL)
+        while(temp != NULL)        //Traversing e whole list  
         {
-            printf("\n\t\t\t\t\t\t %d . ",temp->count);
-            puts(temp->data);
-            fflush(stdin);
-            temp = (temp->next);
+            printf("\n\t\t\t\t\t\t %d . ",temp->count);   //to display index of the Task
+            puts(temp->data);      // to display / print the Task of the Node of the todo list
+            fflush(stdin);         // to clear the input buffer
+            temp = (temp->next);   // storing next node in temp variable
         }
     }
     printf("\n\t\t\t\t\t\t");
@@ -355,17 +424,36 @@ void seeTodo(int do_pause){
 
 struct todo* todoNodeCpy (struct todo* todoNode1 , struct todo* todoNode2){
 
+     /*
+     * Author: Aryan Pandey
+     *
+     *
+     * Function Description : This function is used to copy data of Node 2 to data of Node 1
+     */
     strcpy (todoNode1->data, todoNode2->data);
     return todoNode1;
 }
 
 struct todo* creatNewNode(){
+     /*
+     * Author: Aryan Pandey
+     *
+     *
+     * Function Description : This function is used for dynamic memory allocation for a Node.
+     */
     struct todo* newNode = (struct todo*) malloc(1*sizeof(struct todo));
-    newNode->next = NULL;
+    newNode->next = NULL; // so that last node next pointer is always null. property of linked list to work
     return newNode;
 }
 
 struct todo* addNode(struct todo* todoNode){
+
+     /*
+     * Author: Aryan Pandey
+     *
+     *
+     * Function Description : This function is used for adding a new node to the given node   
+     */ 
     struct todo* creatNewNode();
 
     todoNode->next = creatNewNode();
@@ -373,51 +461,80 @@ struct todo* addNode(struct todo* todoNode){
 }
 
 struct todo* addNextNode (struct todo* todoNode, struct todo element){
+
+     /*
+     * Author: Aryan Pandey
+     *
+     *
+     * Function Description : This function is used for adding a new node to the last of the linked list   
+     */ 
+
     struct todo* getLastNode(struct todo* todoNode);
     struct todo* addNode(struct todo* todoNode);
     struct todo* todoNodeCpy (struct todo* todoNode1 , struct todo* todoNode2);
 
-    struct todo* lastNode = getLastNode(todoNode);
-    int lastNodeCountValue = lastNode->count;
-    lastNode = addNode(lastNode);
-    todoNodeCpy(lastNode,&element);
-    lastNode->count = ++lastNodeCountValue;
+    struct todo* lastNode = getLastNode(todoNode);  // used to get the last node of the list.
+    int lastNodeCountValue = lastNode->count;       // storing last index value
+    lastNode = addNode(lastNode);                   // adding a new Node at the last
+    todoNodeCpy(lastNode,&element);                 // copying the argument value to the last node which is just made
+    lastNode->count = ++lastNodeCountValue;         // setting its pindex value one more than the second last node index
     return lastNode;
 }
 
 struct todo* getNextNode(struct todo* todoNode) {
+     /*
+     * Author: Aryan Pandey
+     *
+     *
+     * Function Description : This function is used to get Next node of the given node       
+     * */
+
     return todoNode->next;
 }
 
 struct todo* getLastNode(struct todo* todoNode){
-    struct todo* getNextNode(struct todo* todoNode);
-    struct todo* nextNode = getNextNode(todoNode);
-    if (nextNode == NULL) return todoNode;
-    else return getLastNode(nextNode);
-}
+     /*
+     * Author: Aryan Pandey
+     *
+     *
+     * Function Description : This function is used to get last node Last node of the given linked list.
+     * its made to work recursivly 
+     */
 
+    struct todo* getNextNode(struct todo* todoNode);
+    struct todo* nextNode = getNextNode(todoNode); // to get next node
+    if (nextNode == NULL) return todoNode; // if its the last node then its nextNode pointer should point to null, 
+    else return getLastNode(nextNode); //otherwise it should check the next node
+    }
 
 void CreateOrUpdateTodo(){
+
+     /*
+     * Author: Aryan Pandey
+     *
+     *
+     * Function Description : This function is used to create a List (when the list is empty), or add a new node at last of the list if the list already exist      
+     */
     struct todo* creatNewNode();
     struct todo* addNextNode (struct todo* todoNode, struct todo element);
 
-    char a[500];
+    char a[500];      //to store response of user choice to add new task or not       
     system("cls");
 
     while(1){
         printf("\n\t\t\t\t\t\t Want to add? y/n \n\t\t\t\t\t\t -->");
-        fflush(stdin);
+        fflush(stdin);     // to clean input buffer
         scanf("%s",a);
 
-        if(a[0] =='y' && a[1] == '\0')
+        if(a[0] =='y' && a[1] == '\0')    // if user input y, yes to add new task to linked list
         {
-            if(start == NULL)
+            if(start == NULL)             // if list is empty
             {
-                start = creatNewNode();
-                start->count = 1;
+                start = creatNewNode();   // made a new node
+                start->count = 1;         // to make index of head node as 1
                 printf("\n\t\t\t\t\t\t Write 1st list here \n\t\t\t\t\t\t --> ");
-                fflush(stdin);
-                gets(start->data);
+                fflush(stdin);            // to clear input buffer
+                gets(start->data);        // input new task data into the list
 
 
             }
@@ -426,13 +543,13 @@ void CreateOrUpdateTodo(){
 
 
                 printf("\n\t\t\t\t\t\t Write another list here \n\t\t\t\t\t\t --> ");
-                fflush(stdin);
+                fflush(stdin);            //to clear input buffer
                 struct todo tempNode;
-                gets(tempNode.data);
-                addNextNode (start,tempNode);
+                gets(tempNode.data);      //to store input of task to a temp node
+                addNextNode (start,tempNode);    // add this temp node to last of link list
             }
         }
-        if(a[0]=='n'&& a[1]=='\0')
+        if(a[0]=='n'&& a[1]=='\0')        // if user input is n, not to add new task to list
         {
             break;
         }
@@ -442,45 +559,59 @@ void CreateOrUpdateTodo(){
 }
 
 void fixcount(){
-    struct todo *ptr;
+     /*
+     * Author: Aryan Pandey
+     *
+     *
+     * Function Description : once we delete the node, all index should be done again, thats what this function does. 
+     */
+
+    struct todo *ptr; // temporary variable to store menu of start (HEAD) static variable
     int i=1;
     ptr = start;
-    while(ptr != NULL)
+    while(ptr != NULL) // the the end of the linked list
     {
-        ptr->count = i;
+        ptr->count = i; // assign the coounter variable i to count variable of the struct
         i++;
-        ptr= ptr->next;
+        ptr= ptr->next; // to get next node of the linked list
     }
 }
 
 void DeleteTodo(){
+
+     /*
+     * Author: Aryan Pandey
+     *
+     *
+     * Function Description :  This function is used to delete/remove a task (Node) from the Todo, by taking input of the index number of that task 
+     */
+
     system("cls");
-    if(start != NULL){
-    seeTodo(0);
-    int a;
-    int flagFound = 0;
+    if(start != NULL){         //checks that linked list is not null
+    seeTodo(0);                // display the current list to the user along with index, so that user can easily understand what has to be deleted.
+    int a;                     // store index location to be deleted.
+    int flagFound = 0;         // store if we can actually successful in deleting the Task (Node) 
     printf("\n\t\t\t\t\t\t Enter the Index you want to delete \n\t\t\t\t\t\t --> ");
     scanf("%d",&a);
     
-    if (a==1){
+    if (a==1){                 // if user wants to delete Head Node, that is treated differently compared to other nodes 
          
-         struct todo* NodeToDelete = start;
-         start = start -> next;
-         free(NodeToDelete);
-         flagFound=1;
-
+         struct todo* NodeToDelete = start;     // store thet Head that has to be deleted node to a temporary variable 
+         start = start -> next;                 // change pointer location of the Head node to next node
+         free(NodeToDelete);                    // delete the old head node
+         flagFound=1;                           // if the node deleted successfully
     }
-    else {
-    struct todo* loopCounter = start;
+    else {                    // if user wants to delete other Node,  
+    struct todo* loopCounter = start;           //store node pointer to move to whole list 
     while(loopCounter -> next != NULL)
     {
 
-        if(loopCounter->next->count == a)
+        if(loopCounter->next->count == a)       // if list index value matches the index to deleted givin by the user 
         {
-            struct todo* NodeToDelete = loopCounter->next;
+            struct todo* NodeToDelete = loopCounter->next;     // swaping to save next node, and link to previous node, before deleting
             loopCounter->next = NodeToDelete->next;
-            free(NodeToDelete);
-            flagFound =1;
+            free(NodeToDelete);                                // delete the node
+            flagFound =1;                                      // if the node deleted successfully
             break;
         }
 
@@ -488,16 +619,16 @@ void DeleteTodo(){
 
     }
     }
-    if (!flagFound){
+    if (!flagFound){                                           // if the index is not found in the list
         printf("\n\t\t\t\t\t\t Index Not Found. \n\t\t\t\t\t\t");
         system ("pause");
     }
     else{
-        fixcount();
+        fixcount();                                            // after deleting the node , fixing the index of all elements of the list, cus one element is deleted, it changed the indexing
     }
 }
     else {
-            printf("\n\t\t\t\t\t\t Cannot delete as list is empty.\n\t\t\t\t\t\t");
+            printf("\n\t\t\t\t\t\t Cannot delete as list is empty.\n\t\t\t\t\t\t"); // if the list is empty 
             system ("pause");
     }
 }
