@@ -216,7 +216,7 @@ void wlcScreen(){
 
     system("color f0");          // changes the colour to black and white.
     char c;
-    system("cls");          // clears the screen.
+    system("cls");          // clears the screen."cls" is a pre defined console command. 
     printf("\n\n\n\n      ");
 
     c=215;
@@ -228,21 +228,22 @@ void wlcScreen(){
 
 
     // first line
-    printf("\t\t\t\t\t%c%c%c%c%c%c",c=176,c=176,c=177,c=177,c=178,c=178);
-    printf("\t\t\t\t %c%c%c%c%c%c",c=178,c=178,c=177,c=177,c=176,c=176);
+    c=133;
+    printf("\t\t\t\t\t%c%c%c%c%c%c",c,c,c,c,c,c);
+    printf("\t\t\t\t %c%c%c%c%c%c",c,c,c,c,c,c);
     printf("\n\n\t       ");
 
 
     // second line
 
-    c=4;
+    c=42;
     for(int i=0; i<10; i++){
-        printf("-%c",c);          // this prints diamonds
+        printf("-%c",c);          // this prints star
     }
 
-    c=3;
+    c=126;
     for(int i=0; i<5; i++){
-        printf("--%c",c);          //this prints a heart
+        printf("--%c",c);          //this prints a tilde
     }
 
     printf(" Welcome to ToDo List ");
@@ -250,15 +251,14 @@ void wlcScreen(){
 
 
 
-    // heart
-    c=3;
+    // tilde
     for(int i=0; i<4; i++){
-        printf("%c--",c);          //this prints a heart
+        printf("%c--",c);          //this prints a tilde
     }
 
     printf("%c-",c);
-                              // this also prints diamonds
-    c=4;
+                              // this also prints star
+    c=42;
     for(int i=0; i<10; i++){
         printf("-%c",c);
     }
