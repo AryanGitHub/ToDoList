@@ -35,8 +35,9 @@ static struct todo *start= NULL;        // Used to create the head node of the L
 
 void main(){
      int choice;                         // store user choice
-     login();  
      wlcScreen();
+     system("cls");
+     login();  
      system("cls");
 
 
