@@ -192,7 +192,7 @@ void login(){
             printf("\n\t\t\t  #--------------------------  ERROR  --------------------------# ");
             printf("\n\t\t\t  !!!                                                         !!! ");
             printf("\n\t\t\t  !!!               Todo list cannot be accesed.              !!! ");
-            printf("\n\t\t\t  !!!                 ToDo many wrong attempts                !!! ");
+            printf("\n\t\t\t  !!!                 Too many wrong attempts                 !!! ");
             printf("\n\t\t\t  !!!                  Re-execute the program                 !!! ");
             printf("\n\t\t\t  !!!                                                         !!! ");
             printf("\n\t\t\t  #-------------------------------------------------------------# \n");
