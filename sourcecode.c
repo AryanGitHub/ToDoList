@@ -14,6 +14,7 @@ void seeTodo(int do_pause);
 void CreateOrUpdateTodo();
 void fixcount();
 void DeleteTodo();
+void EditTaskInTodo();
 int listExists();
 void chooseColor();
 int mainMenu();
@@ -54,9 +55,12 @@ void main(){
             DeleteTodo();
             break;
         case 4:
-            chooseColor();
+            EditTaskInTodo();
             break;
-        case 5:                            //for exit
+        case 5:                            
+            chooseColor();
+            break; 
+        case 6:                            //for exit
             system("cls");
             exit(0);
         }
@@ -192,7 +196,7 @@ void login(){
             printf("\n\t\t\t  #--------------------------  ERROR  --------------------------# ");
             printf("\n\t\t\t  !!!                                                         !!! ");
             printf("\n\t\t\t  !!!               Todo list cannot be accesed.              !!! ");
-            printf("\n\t\t\t  !!!                 ToDo many wrong attempts                !!! ");
+            printf("\n\t\t\t  !!!                 Too many wrong attempts                 !!! ");
             printf("\n\t\t\t  !!!                  Re-execute the program                 !!! ");
             printf("\n\t\t\t  !!!                                                         !!! ");
             printf("\n\t\t\t  #-------------------------------------------------------------# \n");
@@ -382,8 +386,9 @@ int mainMenu(){//sai
         printf("\n\t\t\t\t\t\t 2. Create your ToDo List. \n");
     }
     printf("\n\t\t\t\t\t\t 3. Delete your ToDo List. \n");
-    printf("\n\t\t\t\t\t\t 4. Change Font Color \n");
-    printf("\n\t\t\t\t\t\t 5. Exit ");
+    printf("\n\t\t\t\t\t\t 4. Edit task in your ToDo List. \n");
+    printf("\n\t\t\t\t\t\t 5. Change Font Color \n");
+    printf("\n\t\t\t\t\t\t 6. Exit ");
     printf("\n\t\t\t\t\t\t");
     printf("\n\t\t\t\t\t\t");
     printf("\n\t\t\t\t\t\t Enter your choice \n\t\t\t\t\t\t --> ");
@@ -634,3 +639,52 @@ void DeleteTodo(){
     }
 }
 
+
+void EditTaskInTodo(){
+
+     /*
+     * Author: Aryan Pandey
+     *
+     *
+     * Function Description :  This function is used to edit a task (Node) from the Todo, by taking input of the index number of that task 
+     */
+
+    system("cls");
+    if(start != NULL){         //checks that linked list is not null
+    seeTodo(0);                // display the current list to the user along with index, so that user can easily understand what has to be edited.
+    int a;                     // store index location to be edited.
+    int flagFound = 0;         // store if we can actually successful in editing the Task (Node) 
+    printf("\n\t\t\t\t\t\t Enter the Index you want to edit\n\t\t\t\t\t\t --> ");
+    scanf("%d",&a);
+    
+    struct todo* loopCounter = start;           //store node pointer to move to whole list 
+    while(loopCounter != NULL)
+    {
+
+        if(loopCounter->count == a)       // if list index value matches the index to edited givin by the user 
+        {
+            
+             flagFound =1;                                      // if the node edited successfully
+             printf("\n\t\t\t\t\t\t Enter New Task\n\t\t\t\t\t\t --> ");
+             scanf("%s",loopCounter->data);
+            
+             break;
+        }
+
+        loopCounter = loopCounter->next;
+
+    }
+    
+    if (!flagFound){                                           // if the index is not found in the list
+        printf("\n\t\t\t\t\t\t Index Not Found. \n\t\t\t\t\t\t");
+        system ("pause");
+    }
+    else{
+        fixcount();                                            // after edited the node , fixing the index of all elements of the list
+    }
+}
+    else {
+            printf("\n\t\t\t\t\t\t Cannot edit as list is empty.\n\t\t\t\t\t\t"); // if the list is empty 
+            system ("pause");
+    }
+}
