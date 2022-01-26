@@ -64,6 +64,10 @@ int main(){
             system("cls");
             exit(0);
         }
+        
+        system("cls");
+        fflush(stdin);     // to clean input buffer
+
 
     }
 
@@ -378,7 +382,7 @@ int mainMenu(){//sai
     printf("\n\t\t\t\t\t\t");
     printf("\n\t\t\t\t\t\t");
     printf("\n\t\t\t\t\t\t Enter your choice \n\t\t\t\t\t\t --> ");
-
+    fflush(stdin);     // to clean input buffer
     scanf("%d",&choice);          //takes input from the user and returns to void main();
     return choice;
 }
