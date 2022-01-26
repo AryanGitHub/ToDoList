@@ -619,8 +619,8 @@ void EditTaskInTodo(){
 
              flagFound =1;                                      // if the node edited successfully
              printf("\n\t\t\t\t\t\t Enter New Task\n\t\t\t\t\t\t --> ");
-             scanf("%s",loopCounter->data);
-
+             fflush(stdin);            // to clear input buffer
+             gets(loopCounter->data);
              break;
         }
 
