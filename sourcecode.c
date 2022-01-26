@@ -145,7 +145,7 @@ void login(){
     char uname[10];
     char pword[10];
     char user[10]="live";          // Username used in ToDoList
-    char pass[10]="evil";          // Password used in ToDoList
+    char pass[10]="1234";          // Password used in ToDoList
     do
     {
         system("color f0");
