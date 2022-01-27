@@ -64,6 +64,10 @@ int main(){
             system("cls");
             exit(0);
         }
+        
+        system("cls");
+        fflush(stdin);     // to clean input buffer
+
 
     }
 
@@ -141,7 +145,7 @@ void login(){
     char uname[10];
     char pword[10];
     char user[10]="live";          // Username used in ToDoList
-    char pass[10]="evil";          // Password used in ToDoList
+    char pass[10]="1234";          // Password used in ToDoList
     do
     {
         system("color f0");
@@ -378,7 +382,7 @@ int mainMenu(){//sai
     printf("\n\t\t\t\t\t\t");
     printf("\n\t\t\t\t\t\t");
     printf("\n\t\t\t\t\t\t Enter your choice \n\t\t\t\t\t\t --> ");
-
+    fflush(stdin);     // to clean input buffer
     scanf("%d",&choice);          //takes input from the user and returns to void main();
     return choice;
 }
@@ -619,8 +623,8 @@ void EditTaskInTodo(){
 
              flagFound =1;                                      // if the node edited successfully
              printf("\n\t\t\t\t\t\t Enter New Task\n\t\t\t\t\t\t --> ");
-             scanf("%s",loopCounter->data);
-
+             fflush(stdin);            // to clear input buffer
+             gets(loopCounter->data);
              break;
         }
 
